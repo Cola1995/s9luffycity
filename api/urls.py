@@ -4,5 +4,11 @@ from api.views import course
 
 
 urlpatterns = [
-    url(r'^course/$', course.CourseView.as_view()),
+
+    # 方式1
+    # url(r'^course/$', course.CourseView.as_view()),
+    # url(r'^course/(?P<pk>\d+)/$', course.CourseView.as_view()),
+
+    url(r'^course/$', course.CourseView.as_view({"get":"list"})),
+    url(r'^course/(?P<pk>\d+)/$', course.CourseView.as_view({"get":"retrieve"})),
 ]
