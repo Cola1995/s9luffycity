@@ -44,3 +44,12 @@ class Chapter(models.Model):
 
     class Meta:
         verbose_name_plural = "课程章节表"
+
+class UserInfo(models.Model):
+    user  = models.CharField(max_length=32)
+    pwd = models.CharField(max_length=64)
+
+class UserToken(models.Model):
+    user = models.OneToOneField(to="UserInfo")
+    token = models.CharField(max_length=64)
+
