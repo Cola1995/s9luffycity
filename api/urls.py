@@ -12,6 +12,7 @@ urlpatterns = [
     url(r'^course/$', course.CourseView.as_view({"get":"list"})),
     url(r'^course/(?P<pk>\d+)/$', course.CourseView.as_view({"get":"retrieve"})),
     url(r'^auth/$', account.authView.as_view()),
+    url(r'^job/$', account.JobView.as_view()),
 
 
 ]
