@@ -46,8 +46,13 @@ class CourseView(ViewSetMixin,APIView): # 注意继承顺序
     def list(self,request,*args,**kwargs):
        ret = {"code":1000,"data":None}
        try:
+           if request.GET:
+               # print("ok")
 
-           queryset = models.Course.objects.all()
+               id = request.GET.get("pk")
+               queryset = models.Course.objects.filter(sub_category_id=id).all()
+           else:
+               queryset = models.Course.objects.all()
            ser = CourseSerializers(instance=queryset,many=True)
            ret["data"] = ser.data
        except:
@@ -76,4 +81,11 @@ class CourseView(ViewSetMixin,APIView): # 注意继承顺序
             ret["data"] = "获取课程失败"
 
         return Response(ret)
-
+#
+class CourseSubCategoryView(ViewSetMixin,APIView):
+    def list(self,request,*args,**kwargs):
+        ret = {"code":1000,"data":None}
+        queryset = models.CourseSubCategory.objects.all()
+        ser = CourseSubCategorySerializers(instance=queryset,many=True)
+        ret["data"] = ser.data
+        return Response(ret)
