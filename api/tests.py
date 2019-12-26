@@ -89,6 +89,7 @@ if __name__=="__main__":
     apiKey = "X9l1reZjEishJf4bGBv7wA41PBj4id6h"
     str = "2374320"
     sha256(apiKey,str)
+    print("这是dev分支")
 
     # accesskey = "92e8cfc65915980630225213631a6e4b"
     # secretkey  = "+GXLAUbwd14KXYvr3KK3EACaQRHiFLJkBLJ6wLQbIFw="
